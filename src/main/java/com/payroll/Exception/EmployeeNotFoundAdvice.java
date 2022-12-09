@@ -1,5 +1,6 @@
-package com.payroll;
+package com.payroll.Exception;
 
+import com.payroll.Exception.EmployeeNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;

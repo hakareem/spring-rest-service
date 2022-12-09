@@ -1,4 +1,4 @@
-package com.payroll;
+package com.payroll.Entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -10,21 +10,26 @@ import java.util.Objects;
 public class Employee {
     private @Id @GeneratedValue Long id;
     private String name;
+    private String firstName;
+    private String lastName;
     private String role;
 
     Employee() {}
 
-    Employee(String name, String role) {
-        this.name = name;
+    Employee(String firstName, String lastName, String role) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.role = role;
     }
 
     public String getName() {
-        return name;
+        return this.firstName + " " + this.lastName;
     }
 
     public void setName(String name) {
-        this.name = name;
+        String[] split = name.split(" ");
+        this.firstName = split[0];
+        this.lastName = split[1];
     }
 
     public String getRole() {
@@ -48,7 +53,7 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return Objects.equals(id, employee.id) && Objects.equals(name, employee.name) && Objects.equals(role, employee.role);
+        return Objects.equals(id, employee.id) && Objects.equals(this.firstName, employee.firstName) && Objects.equals(this.lastName, employee.lastName) && Objects.equals(role, employee.role);
     }
 
     @Override
@@ -60,8 +65,25 @@ public class Employee {
     public String toString() {
         return "Employee{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", firstName='" + this.firstName + '\'' +
+                ", lastName='" + this.lastName + '\'' +
                 ", role='" + role + '\'' +
                 '}';
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 }

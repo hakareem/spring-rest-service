@@ -1,5 +1,7 @@
-package com.payroll;
+package com.payroll.Resource;
 
+import com.payroll.Entity.Employee;
+import com.payroll.Repository.EmployeeRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -13,8 +15,8 @@ import org.springframework.context.annotation.Configuration;
     @Bean
     CommandLineRunner initDatabase(EmployeeRepository repository) {
         return args -> {
-            log.info("Preloading " + repository.save(new Employee("penaldo", "finished")));
-            log.info("Preloading " + repository.save(new Employee("pessi", "goat")));
+            log.info("Preloading " + repository.save(new Employee("cristiano", "penaldo", "finished")));
+            log.info("Preloading " + repository.save(new Employee("leo", "pessi","goat")));
         };
     }
 }
